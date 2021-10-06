@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, StyleSheet, Text, FlatList } from "react-native";
 
 import Categoryitem from "../components/FlatListElements/CategoryItem";
@@ -8,15 +8,16 @@ import color from "../config/color";
 
 import { categories, sources } from "../util/api";
 
-const Home = () => {
-  //console.log(categories);
+const Home = ({ jumpTo }) => {
   return (
     <View style={[styles.container, { backgroundColor: color.dark_primary }]}>
       <Text style={[styles.heading, { color: "white" }]}>Categories</Text>
       <FlatList
         data={categories}
         keyExtractor={(category) => category.name}
-        renderItem={(category) => <Categoryitem category={category} />}
+        renderItem={(category) => (
+          <Categoryitem category={category} jumpTo={jumpTo} />
+        )}
         style={styles.categories}
         horizontal
         showsHorizontalScrollIndicator
@@ -28,7 +29,9 @@ const Home = () => {
         <FlatList
           data={sources}
           keyExtractor={(source) => source.id}
-          renderItem={(source) => <Sourceitem source={source} />}
+          renderItem={(source) => (
+            <Sourceitem source={source} jumpTo={jumpTo} />
+          )}
           numColumns={2}
           style={styles.sources}
         />

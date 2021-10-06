@@ -1,9 +1,17 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import { connect } from "react-redux";
 
-const Categoryitem = ({ category }) => {
+import { getNews } from "../../actions";
+
+const Categoryitem = ({ category, getNews, jumpTo }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() =>
+        getNews({ topic: category.item.name, jumpTo, type: "category" })
+      }
+    >
       <Image
         style={styles.image}
         source={{
@@ -34,4 +42,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Categoryitem;
+export default connect(null, { getNews })(Categoryitem);

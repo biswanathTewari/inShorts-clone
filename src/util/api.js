@@ -93,3 +93,12 @@ export const getNewsAPI = (category, country = "in") => {
 export const getSourceAPI = (source) => {
   return `${BASE_URL}/everything/${source}.json`;
 };
+
+export const fetchNews = async (api) => {
+  const response = await fetch(api);
+  const data = await response.json();
+  if (response.status >= 400) {
+    throw new Error(data.errors);
+  }
+  return data;
+};

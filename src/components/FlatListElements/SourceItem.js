@@ -1,9 +1,15 @@
 import React from "react";
-import { View, StyleSheet, TouchableOpacity, Image, Text } from "react-native";
+import { connect } from "react-redux";
+import { StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 
-const Sourceitem = ({ source }) => {
+import { getNews } from "../../actions";
+
+const Sourceitem = ({ source, getNews, jumpTo }) => {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity
+      style={styles.container}
+      onPress={() => getNews({ topic: source.item.id, jumpTo, type: "source" })}
+    >
       <Image
         style={styles.image}
         source={{
@@ -35,4 +41,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Sourceitem;
+export default connect(null, { getNews })(Sourceitem);

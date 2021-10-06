@@ -1,4 +1,5 @@
 import React from "react";
+import { connect } from "react-redux";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import {
   MaterialCommunityIcons,
@@ -6,19 +7,21 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 
+import { getNews } from "../actions";
+
 import color from "../config/color";
 
 const Apptabbar = (props) => {
-  const { navigationState, jumpTo } = props;
+  const { navigationState, jumpTo, getNews } = props;
   const { index } = navigationState;
 
-  const HomeRightButton = () => (
+  const HomeLeftButton = () => (
     <TouchableOpacity>
       <MaterialCommunityIcons name="theme-light-dark" size={24} color="white" />
     </TouchableOpacity>
   );
 
-  const HomeLeftButton = () => (
+  const HomeRightButton = () => (
     <TouchableOpacity
       style={styles.buttonContainer}
       onPress={() => jumpTo("feed")}
@@ -30,7 +33,7 @@ const Apptabbar = (props) => {
     </TouchableOpacity>
   );
 
-  const FeedRightButton = () => (
+  const FeedLeftButton = () => (
     <TouchableOpacity
       style={styles.buttonContainer}
       onPress={() => jumpTo("home")}
@@ -42,19 +45,19 @@ const Apptabbar = (props) => {
     </TouchableOpacity>
   );
 
-  const FeedLeftButton = () => (
-    <TouchableOpacity>
+  const FeedRightButton = () => (
+    <TouchableOpacity onPress={() => getNews({ isFromFeed: true })}>
       <Ionicons name="ios-reload" size={24} color="white" />
     </TouchableOpacity>
   );
 
   return (
     <View style={[styles.container, { backgroundColor: color.dark_secondary }]}>
-      {index === 0 ? <HomeRightButton /> : <FeedRightButton />}
+      {index === 0 ? <HomeLeftButton /> : <FeedLeftButton />}
       <Text style={{ color: "white", textDecorationLine: "underline" }}>
         {index === 0 ? "Discover" : "My Feed"}
       </Text>
-      {index === 0 ? <HomeLeftButton /> : <FeedLeftButton />}
+      {index === 0 ? <HomeRightButton /> : <FeedRightButton />}
     </View>
   );
 };
@@ -75,4 +78,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Apptabbar;
+export default connect(null, { getNews })(Apptabbar);
