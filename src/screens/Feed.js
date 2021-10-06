@@ -11,7 +11,7 @@ import color from "../config/color";
 const Feed = ({ news, getNews, darkMode }) => {
   const [refreshing, setRefreshing] = useState(false);
   useEffect(() => {
-    if (news == []) getNews({ isFromFeed: true });
+    if (news.length < 1) getNews({ isFromFeed: true });
   }, []);
 
   return (
