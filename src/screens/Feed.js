@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 
 import { getNews } from "../actions";
 
+import NewsItem from "../components/FlatListElements/NewsItem";
+
 import color from "../config/color";
 
 const Feed = ({ news, getNews }) => {
@@ -11,11 +13,9 @@ const Feed = ({ news, getNews }) => {
     if (news == []) getNews({ isFromFeed: true });
   }, []);
 
-  console.log(news);
-
   return (
     <View style={{ flex: 1, backgroundColor: color.dark_primary }}>
-      <Text style={{ color: "white" }}>Feed</Text>
+      <NewsItem />
     </View>
   );
 };
