@@ -7,16 +7,16 @@ import {
   Ionicons,
 } from "@expo/vector-icons";
 
-import { getNews } from "../actions";
+import { getNews, toggleDarkMode } from "../actions";
 
 import color from "../config/color";
 
 const Apptabbar = (props) => {
-  const { navigationState, jumpTo, getNews } = props;
+  const { navigationState, jumpTo, getNews, toggleDarkMode } = props;
   const { index } = navigationState;
 
   const HomeLeftButton = () => (
-    <TouchableOpacity>
+    <TouchableOpacity onPress={() => toggleDarkMode()}>
       <MaterialCommunityIcons
         name="theme-light-dark"
         size={24}
@@ -98,4 +98,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(null, { getNews })(Apptabbar);
+export default connect(null, { getNews, toggleDarkMode })(Apptabbar);

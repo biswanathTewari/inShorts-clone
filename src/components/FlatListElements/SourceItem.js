@@ -4,7 +4,7 @@ import { StyleSheet, TouchableOpacity, Image, Text } from "react-native";
 
 import { getNews } from "../../actions";
 
-const Sourceitem = ({ source, getNews, jumpTo }) => {
+const Sourceitem = ({ source, getNews, jumpTo, darkMode }) => {
   return (
     <TouchableOpacity
       style={styles.container}
@@ -16,7 +16,9 @@ const Sourceitem = ({ source, getNews, jumpTo }) => {
           uri: source.item.pic,
         }}
       />
-      <Text style={[styles.text, { color: "white" }]}>{source.item.name}</Text>
+      <Text style={[styles.text, { color: darkMode ? "white" : "black" }]}>
+        {source.item.name}
+      </Text>
     </TouchableOpacity>
   );
 };

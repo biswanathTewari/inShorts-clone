@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import { getNews } from "../../actions";
 
-const Categoryitem = ({ category, getNews, jumpTo }) => {
+const Categoryitem = ({ category, getNews, jumpTo, darkMode }) => {
   return (
     <TouchableOpacity
       style={styles.container}
@@ -18,7 +18,7 @@ const Categoryitem = ({ category, getNews, jumpTo }) => {
           uri: category.item.pic,
         }}
       />
-      <Text style={[styles.text, { color: "white" }]}>
+      <Text style={[styles.text, { color: darkMode ? "white" : "black" }]}>
         {category.item.name}
       </Text>
     </TouchableOpacity>

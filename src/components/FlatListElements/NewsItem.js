@@ -10,18 +10,20 @@ import {
   Linking,
 } from "react-native";
 
-const NewsItem = ({ newsItem }) => {
+const NewsItem = ({ newsItem, darkMode }) => {
   return (
     <View style={styles.container}>
       <Image style={styles.image} source={{ uri: newsItem.item.urlToImage }} />
       <View style={styles.details}>
-        <Text style={[styles.title, { color: "white" }]}>
+        <Text style={[styles.title, { color: darkMode ? "white" : "black" }]}>
           {newsItem.item.title}
         </Text>
-        <Text style={[styles.description, { color: "white" }]}>
+        <Text
+          style={[styles.description, { color: darkMode ? "white" : "black" }]}
+        >
           {newsItem.item.description}
         </Text>
-        <Text style={[styles.source, { color: "white" }]}>
+        <Text style={[styles.source, { color: darkMode ? "white" : "black" }]}>
           Source: {newsItem.item.source.name}
         </Text>
       </View>

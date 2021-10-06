@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 import { createReducer } from "redux-act";
 
-import { setNews } from "../actions";
+import { setNews, toggleDarkMode } from "../actions";
 
 const newsReducer = createReducer(
   {
@@ -10,6 +10,14 @@ const newsReducer = createReducer(
   []
 );
 
+const darkModeReducer = createReducer(
+  {
+    [toggleDarkMode]: (state) => !state,
+  },
+  true
+);
+
 export default combineReducers({
   news: newsReducer,
+  darkMode: darkModeReducer,
 });
