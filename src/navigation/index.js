@@ -8,8 +8,8 @@ import Feed from "../screens/Feed";
 import AppTabBar from "../components/AppTabBar";
 
 const renderScene = SceneMap({
-  first: Home,
-  second: Feed,
+  home: Home,
+  feed: Feed,
 });
 
 export default function Navigation() {
@@ -17,8 +17,8 @@ export default function Navigation() {
 
   const [index, setIndex] = useState(0);
   const [routes] = useState([
-    { key: "first", title: "Home" },
-    { key: "second", title: "Feed" },
+    { key: "home", title: "Home" },
+    { key: "feed", title: "Feed" },
   ]);
 
   return (

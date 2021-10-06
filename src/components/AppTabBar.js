@@ -9,7 +9,7 @@ import {
 import color from "../config/color";
 
 const Apptabbar = (props) => {
-  const { navigationState } = props;
+  const { navigationState, jumpTo } = props;
   const { index } = navigationState;
 
   const HomeRightButton = () => (
@@ -19,16 +19,22 @@ const Apptabbar = (props) => {
   );
 
   const HomeLeftButton = () => (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity
+      style={styles.buttonContainer}
+      onPress={() => jumpTo("feed")}
+    >
       <Text style={{ color: "white", position: "absolute", right: "100%" }}>
-        Feed
+        My Feed
       </Text>
       <MaterialIcons name="arrow-forward-ios" size={24} color="white" />
     </TouchableOpacity>
   );
 
   const FeedRightButton = () => (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity
+      style={styles.buttonContainer}
+      onPress={() => jumpTo("home")}
+    >
       <MaterialIcons name="arrow-back-ios" size={24} color="white" />
       <Text style={{ color: "white", position: "absolute", left: "100%" }}>
         Discover
@@ -60,7 +66,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    paddingHorizontal: 5,
+    paddingHorizontal: 8,
   },
   buttonContainer: {
     flexDirection: "row",
