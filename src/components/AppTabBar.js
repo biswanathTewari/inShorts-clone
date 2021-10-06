@@ -65,7 +65,7 @@ const Apptabbar = (props) => {
 const styles = StyleSheet.create({
   container: {
     width: "100%",
-    height: 40,
+    height: 50,
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
